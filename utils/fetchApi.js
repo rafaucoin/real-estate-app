@@ -8,7 +8,7 @@ var sale = {
   params: {
     locationExternalIDs: "5002",
     purpose: "for-sale",
-    hitsPerPage: "6",
+    hitsPerPage: "8",
     page: "0",
     lang: "en",
     sort: "city-level-score",
@@ -37,7 +37,7 @@ var rent = {
   params: {
     locationExternalIDs: "5002",
     purpose: "for-rent",
-    hitsPerPage: "6",
+    hitsPerPage: "8",
     page: "0",
     lang: "en",
     sort: "city-level-score",

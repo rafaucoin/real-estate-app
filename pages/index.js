@@ -1,8 +1,8 @@
 import { Flex, Box, Text, Button } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
-import { baseUrl, fetchSale, fetchRent } from "../utils/fetchApi";
-
+import { fetchApi, baseUrl } from "../utils/fetchApi";
+import Property from "../components/property";
 const Banner = ({
   purpose,
   title1,
@@ -46,27 +46,29 @@ const Banner = ({
 );
 
 export default function Home({ propertiesForRent, propertiesForSale }) {
-  console.log(propertiesForRent);
-  console.log(propertiesForSale);
+  // console.log(propertiesForRent);
+  // console.log(propertiesForSale);
 
   return (
-    <Box className="index">
+    <Box className="index" alignItems="center" marginTop={10}>
       <Banner
         purpose="Rent a home"
         title="Rental Homes for"
         title1="Everyone"
         desc1="Explore appartment"
-        desc2="and "
+        desc2="and more"
         buttontext="Explore Renting"
         linkName="/search?purpose=for-rent"
         imgurl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
       />
-      {/* <Flex flexWrap='wrap'>
-        {propertiesForRent.map((property)=>{<property property/>})}
-      </Flex> */}
+      <Flex flexWrap="wrap" justifyContent="center">
+        {propertiesForRent.map((property) => (
+          <Property key={property.id} property={property} />
+        ))}
+      </Flex>
       <Banner
         purpose="Buy a home"
-        title="Find, Buy Own your"
+        title="Find, Buy, Own, your"
         title1="Dream Home"
         desc1="Explore appartments, Villas"
         desc2="and more"
@@ -74,18 +76,27 @@ export default function Home({ propertiesForRent, propertiesForSale }) {
         linkName="/search?purpose=for-sale"
         imgurl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
       />
+      <Flex flexWrap="wrap" justifyContent="center">
+        {propertiesForSale.map((property) => (
+          <Property key={property.id} property={property} />
+        ))}
+      </Flex>
     </Box>
   );
 }
 
 export async function getStaticProps() {
-  const propertyForRent = await fetchRent();
-  const propertyForSale = await fetchSale();
+  const propertyForSale = await fetchApi(
+    `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`
+  );
+  const propertyForRent = await fetchApi(
+    `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=6`
+  );
 
   return {
     props: {
-      propertiesForRent: propertyForRent,
-      propertiesForSale: propertyForSale,
+      propertiesForSale: propertyForSale?.hits,
+      propertiesForRent: propertyForRent?.hits,
     },
   };
 }

@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
     <>
       <Box max-width="1280px" m="auto">
         <NavBar />
-        <main>{children}</main>
+        <main className="hey">{children}</main>
         <footer>Footer</footer>
       </Box>
     </>

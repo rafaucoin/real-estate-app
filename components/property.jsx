@@ -24,7 +24,7 @@ const Property = ({
     <Flex
       flexWrap="wrap"
       w="420px"
-      p="5"
+      m="5"
       paddingTop="0px"
       justifyContent="flex-start"
       cursor="pointer"
@@ -48,7 +48,7 @@ const Property = ({
               {isVerified && <GoVerified />}
             </Box>
             <Text fontWeight="bold" fontSize="lg">
-              AED {price}
+              AED {price > 10000 ? `${price / 10000}K` : price}
               {rentFrequency && `/${rentFrequency}`}
             </Text>
           </Flex>

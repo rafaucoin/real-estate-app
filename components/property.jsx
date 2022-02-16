@@ -22,12 +22,14 @@ const Property = ({
 }) => (
   <Link href={`/property/${externalID}`} passHref>
     <Flex
-      flexWrap="wrap"
-      w="420px"
+      w="fit-content"
       m="5"
-      paddingTop="0px"
-      justifyContent="flex-start"
+      flexDirection="column"
+      padding="2"
+      justifyContent="center"
       cursor="pointer"
+      borderRadius={10}
+      bg="gray.300"
     >
       <Box>
         <Image
@@ -48,7 +50,7 @@ const Property = ({
               {isVerified && <GoVerified />}
             </Box>
             <Text fontWeight="bold" fontSize="lg">
-              AED {price > 10000 ? `${price / 10000}K` : price}
+              AED {price > 999999 ? `${price / 1000000}M` : `${price / 1000}K`}
               {rentFrequency && `/${rentFrequency}`}
             </Text>
           </Flex>

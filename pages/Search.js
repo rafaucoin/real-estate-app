@@ -14,13 +14,8 @@ const Search = ({ properties }) => {
   const router = useRouter();
 
   return (
-    <Flex w="100%" justifyContent="center" flexDirection="column">
-      <Flex
-        cursor="pointer"
-        bg="lightgrey"
-        justifyContent="center"
-        alignItems="center"
-      >
+    <Flex w="100%" justifyContent="center" flexDirection="column" border="sm">
+      <Flex cursor="pointer" justifyContent="center" alignItems="center">
         <Flex paddingTop={70} onClick={() => setSearchFliters((prev) => !prev)}>
           <Text fontSize="20" fontWeight="bold">
             Apply Search Fliters

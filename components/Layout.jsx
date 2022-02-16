@@ -3,9 +3,17 @@ import NavBar from "./NavBar";
 const Layout = ({ children }) => {
   return (
     <>
-      <Box max-width="1280px" m="auto">
+      <Box display="flex" flexDirection="column">
         <NavBar />
-        <main className="hey">{children}</main>
+        <Flex
+          className="hey"
+          as="main"
+          justifyContent="center"
+          flexDirection="column"
+          width="100%"
+        >
+          {children}
+        </Flex>
         <footer>Footer</footer>
       </Box>
     </>

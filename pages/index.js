@@ -13,26 +13,23 @@ const Banner = ({
   linkName,
   imgurl,
 }) => (
-  <Box
-    display="flex"
+  <Flex
     flexWrap="wrap"
     justifyContent="center"
     alignItems="center"
     flexDir={("column", "column", "row", "row")}
   >
     <Image src={imgurl} width={500} height={300} alt="banner" />
-    <Box p="5">
+    <Flex flexDirection={"column"} p="5" width="100%" align="center" >
       <Text fontSize="lg" fontWeight="medium">
         {purpose}
       </Text>
-      <Text fontSize="xl" fontWeight="bold">
-        {title1}
-        <br />
+      <Text fontSize={{base: "2xl",sm:"3xl"}} fontWeight="bold">
+        {title1} {" "}
         {title}
       </Text>
       <Text fontSize="lg" paddingTop="3" paddingBottom="3" fontWeight="medium">
-        {desc1}
-        <br />
+        {desc1}{" "}
         {desc2}
       </Text>
 
@@ -41,8 +38,8 @@ const Banner = ({
           <a>{buttontext}</a>
         </Link>
       </Button>
-    </Box>
-  </Box>
+    </Flex>
+  </Flex>
 );
 
 export default function Home({ propertiesForRent, propertiesForSale }) {

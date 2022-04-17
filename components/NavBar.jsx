@@ -1,5 +1,6 @@
-import { IconButton, Flex, Box, Spacer, Button, Icon } from "@chakra-ui/react";
-import { FcMenu, FcHome, FcAbout } from "react-icons/fc";
+import { IconButton, Flex, Box, Spacer, Button, Icon, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
+import {  FcHome, FcAbout } from "react-icons/fc";
+import {AiOutlineMenu} from "react-icons/ai"
 import { BsSearch } from "react-icons/bs";
 import { FiKey } from "react-icons/fi";
 import Image from "next/image";
@@ -13,6 +14,7 @@ const NavBar = () => {
   const [mode, setMode] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
   return (
+    <>
     <Flex
       pos="fixed"
       w="100%"
@@ -34,7 +36,7 @@ const NavBar = () => {
         <Link href="/">Realtor</Link>
       </Box>
       <Spacer />
-      <Flex fontSize={["lg", "sm"]} paddingLeft={["13", 2, 0, 0]}>
+      <Flex display={{base:"none",md:"flex"}} fontSize={["lg", "sm"]} paddingLeft={["13", 2, 0, 0]}>
         <IconButton
           variant="outline"
           padding={0}
@@ -94,7 +96,74 @@ const NavBar = () => {
           </Box>
         </Link>
       </Flex>
+      <Flex display={{md:"none"}}>
+      <Menu>
+  <MenuButton as={IconButton} icon={<AiOutlineMenu size={25} color="white"/>}>
+  </MenuButton>
+  <MenuList>
+  <Link href="/" passHref>
+          <Box>
+            <Button
+              variant="ghost"
+              _focus={{
+                border: "none",
+              }}
+              w="full"
+
+            >
+              Home
+            </Button>
+          </Box>
+        </Link>
+        <Link href="/Search" passHref>
+          <Box>
+            <Button
+              variant="ghost"
+              _focus={{
+                border: "none",
+              }}
+              w="full"
+
+            >
+              {" "}
+              Search
+            </Button>
+          </Box>
+        </Link>
+        <Link href="/Search?purpose=for-sale" passHref>
+          <Box>
+            <Button
+              variant="ghost"
+              _focus={{
+                border: "none",
+              }}
+              w="full"
+
+            >
+              Buy
+            </Button>
+          </Box>
+        </Link>
+        <Link href="/Search?purpose=for-rent" passHref>
+          <Box>
+            <Button
+              variant="ghost"
+              _focus={{
+                border: "none",
+              }}
+              w="full"
+            >
+              Rent
+            </Button>
+          </Box>
+        </Link>
+  </MenuList>
+</Menu>
+      </Flex>
     </Flex>
+    
+    </>
+
   );
 };
 

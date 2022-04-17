@@ -1,4 +1,4 @@
-import { Flex, Box, Text, Button, Avatar, Spacer } from "@chakra-ui/react";
+import { Flex, Box, Text, Button, Avatar, Spacer,useColorMode } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaBath, FaBed } from "react-icons/fa";
@@ -19,8 +19,9 @@ const Property = ({
     isVerified,
     externalID,
   },
-}) => (
-  <Link href={`/property/${externalID}`} passHref>
+}) => {
+  const { colorMode, toggleColorMode } = useColorMode()  
+  return <Link href={`/property/${externalID}`} passHref>
     <Flex
       w="fit-content"
       m="5"
@@ -29,8 +30,8 @@ const Property = ({
       justifyContent="center"
       cursor="pointer"
       borderRadius={10}
-      bg="gray.300"
-    >
+      bg={colorMode === "light"? "gray.300": "gray.700"}
+>
       <Box>
         <Image
           src={coverPhoto ? coverPhoto.url : img}
@@ -45,7 +46,7 @@ const Property = ({
           justifyContent="space-between"
           w="full"
         >
-          <Flex alignItems="center">
+          <Flex width="full" alignItems="center">
             <Box paddingRight="3" color="green.400">
               {isVerified && <GoVerified />}
             </Box>
@@ -54,15 +55,15 @@ const Property = ({
               {rentFrequency && `/${rentFrequency}`}
             </Text>
           </Flex>
-          <Box>
+          {/* <Box>
             <Image height={60} width={130} src={agency?.logo?.url} />
-          </Box>
+          </Box> */}
         </Flex>
         <Flex
           alignItems="center"
           p="1"
           justifyContent="space-between"
-          w="250px"
+          w="100%"
           color="blue.400"
         >
           {/* {rooms} */}
@@ -74,5 +75,5 @@ const Property = ({
       </Box>
     </Flex>
   </Link>
-);
+};
 export default Property;

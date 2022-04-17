@@ -7,17 +7,32 @@ import {
   Heading,
   Text,
   Container,
-  Image,
+  chakra,
   Flex,
 } from '@chakra-ui/react';
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 // And react-slick as our Caroussel Lib
 import Slider from 'react-slick';
+import Image from 'next/image';
 
 // Settings for the slider
 
-
+const Images = chakra(Image, {
+  shouldForwardProp: (prop) =>
+    [
+      "width",
+      "height",
+      "src",
+      "alt",
+      "quality",
+      "placeholder",
+      "blurDataURL",
+      "borderRadius",
+      "loader ",
+      "layout",
+    ].includes(prop),
+});
 export default function Caroussel({photos}) {
   // As we have used custom buttons, we need a reference variable to
   // change the state
@@ -86,15 +101,14 @@ export default function Caroussel({photos}) {
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {photos?.map((photo) => (
-          <Flex
+          <Box
             key={photo.id}
             height={{base:'55vh', md:"70vh"}}
             position="relative"
-            borderRadius={10}
             >
             {/* This is the block you need to change, to customize the caption */}
-            <Image key={photo.id} src={photo.url} height={"100%"} width="100%" objectFit='cover' borderRadius={10} />
-          </Flex>
+            <Images key={photo.id} src={photo.url} objectFit='cover' borderRadius={10} layout='fill' />
+          </Box>
         ))}
       </Slider>
     </Box>

@@ -112,7 +112,7 @@ const NavBar = () => {
       </Box>
       <Flex  display={{md:"none"}}>
       <Menu>
-  <MenuButton as={IconButton} icon={<AiOutlineMenu size={25} color="white"/>}>
+  <MenuButton as={IconButton} icon={<AiOutlineMenu size={25} color={colorMode === "light"? "black" : "white"}/>}>
   </MenuButton>
   <MenuList>
   <Link href="/" passHref>

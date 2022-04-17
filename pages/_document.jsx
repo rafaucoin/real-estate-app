@@ -11,6 +11,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Mulish:ital@1&family=Poppins:wght@400;600;700&display=swap"
             rel="stylesheet"
           />
+          <title>Realtor</title>
         </Head>
         <body>
           <Main />

@@ -42,8 +42,6 @@ export default function Caroussel({photos}) {
 
   return (
     <Box
-    borderRadius={10}
-
       position={'relative'}
       height={'100%'}
       width={'full'}

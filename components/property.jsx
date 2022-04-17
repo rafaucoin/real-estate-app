@@ -29,10 +29,10 @@ const Property = ({
       padding="2"
       justifyContent="center"
       cursor="pointer"
-      borderRadius={10}
-      bg={colorMode === "light"? "gray.300": "gray.700"}
+      borderRadius={15}
+      bg={colorMode === "light"? "gray.100": "gray.700"}
 >
-      <Box>
+      <Box >
         <Image
           src={coverPhoto ? coverPhoto.url : img}
           height={260}

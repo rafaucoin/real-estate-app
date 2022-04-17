@@ -96,7 +96,21 @@ const NavBar = () => {
           </Box>
         </Link>
       </Flex>
-      <Flex display={{md:"none"}}>
+      <Box mr={10}
+   display={{ base:"flex",md:"none"}}
+>
+
+      <IconButton
+          variant="outline"
+          padding={0}
+          aria-label="mode"
+          width={5}
+          height={10}
+          onClick={toggleColorMode}
+          icon={colorMode === "dark" ? <IoSunny /> : <IoMoon />}
+        />
+      </Box>
+      <Flex  display={{md:"none"}}>
       <Menu>
   <MenuButton as={IconButton} icon={<AiOutlineMenu size={25} color="white"/>}>
   </MenuButton>

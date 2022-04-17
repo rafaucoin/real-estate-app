@@ -14,7 +14,9 @@ const Layout = ({ children }) => {
         >
           {children}
         </Flex>
-        <footer>Footer</footer>
+        <Flex mt={10} height="10vh" width="100%" alignItems="center" justifyContent="center" >
+          2022-Realtor-inc
+        </Flex>
       </Box>
     </>
   );

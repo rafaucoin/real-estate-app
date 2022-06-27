@@ -15,6 +15,7 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Caroussel Lib
 import Slider from "react-slick";
 import Image from "next/image";
+import img from "/img.png";
 
 // Settings for the slider
 
@@ -112,7 +113,7 @@ export default function Caroussel({ photos }) {
             {/* This is the block you need to change, to customize the caption */}
             <Images
               key={photo.id}
-              src={photo.url}
+              src={photo.url ? photo.url : img}
               objectFit="cover"
               borderRadius={10}
               layout="fill"

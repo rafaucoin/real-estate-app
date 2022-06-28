@@ -20,17 +20,15 @@ const Banner = ({
     flexDir={("column", "column", "row", "row")}
   >
     <Image src={imgurl} width={500} height={300} alt="banner" />
-    <Flex flexDirection={"column"} p="5" width="100%" align="center" >
+    <Flex flexDirection={"column"} p="5" width="100%" align="center">
       <Text fontSize="lg" fontWeight="medium">
         {purpose}
       </Text>
-      <Text fontSize={{base: "2xl",sm:"3xl"}} fontWeight="bold">
-        {title1} {" "}
-        {title}
+      <Text fontSize={{ base: "2xl", sm: "3xl" }} fontWeight="bold">
+        {title1} {title}
       </Text>
       <Text fontSize="lg" paddingTop="3" paddingBottom="3" fontWeight="medium">
-        {desc1}{" "}
-        {desc2}
+        {desc1} {desc2}
       </Text>
 
       <Button size="md" colorScheme="teal">
@@ -64,7 +62,7 @@ export default function Home({ propertiesForRent, propertiesForSale }) {
         linkName="/search?purpose=for-rent"
         imgurl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
       />
-      <Flex flexWrap="wrap" justifyContent="center" width="100%">
+      <Flex as="section" flexWrap="wrap" justifyContent="center" width="100%">
         {propertiesForRent.map((property) => (
           <Property key={property.id} property={property} />
         ))}
@@ -79,7 +77,7 @@ export default function Home({ propertiesForRent, propertiesForSale }) {
         linkName="/search?purpose=for-sale"
         imgurl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
       />
-      <Flex flexWrap="wrap" justifyContent="center">
+      <Flex as="section" flexWrap="wrap" justifyContent="center">
         {propertiesForSale.map((property) => (
           <Property key={property.id} property={property} />
         ))}
